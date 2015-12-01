@@ -1,0 +1,103 @@
+---
+title: "info"
+output:
+  html_document:
+    theme: readable
+    toc: true
+    toc_depth: 3
+#    number_sections: true
+bibliography: include/references.bib
+---
+
+## Distributions
+
+### Generalized extreme value distribution (GEV)
+
+Coming from extreme value theory GEV is the asymptotic distribution of block maxima under rather permissive conditions [@Coles01].
+
+$$F(x,\mu ,\sigma ,\xi )=\exp \left( { -{ { \left( { 1+\xi \cdot \left( { \frac { { x-\mu  } }{ \sigma  }  } \right)  } \right)  }^{ { { -1 }{ \left /{ { \xi  } } \right.  } } } } } \right)$$
+
+Where:
+
+* $F(.)$ cumulative distribution function,
+* $\mu$ location parameter,
+* $\sigma$ scale parameter,
+* $\xi$ shape parameter.
+
+### Gumbel distribution
+
+Special case of GEV family with $\xi \rightarrow 0$.
+
+$$F(x,\mu ,\sigma ) = \exp \left( { - \exp \left( { - \left( {\frac{{x - \mu }}{\sigma }} \right)} \right)} \right)$$
+
+***
+
+## Distribution fit
+
+### Point estimate
+
+$$L = \prod\limits_{i = 1}^n {f\left( {{x_i},{\boldsymbol{\theta }}} \right)}$$
+
+Where:
+
+* $f(.)$ density function,
+* $\boldsymbol{\theta }$ model parameters,
+* $x_i$ _i_<sup>th</sup> observation,
+* $n$ sample size.
+
+### Confidence intervals
+
+Delta method..
+
+***
+
+## Model comparison
+
+
+### Akaike information criteria (AIC)
+
+[@Burnham02]
+
+$$AIC = 2 \cdot k - 2 \cdot \ln \left( L \right)$$
+
+
+| &Delta;<sub>_i_</sub>   | Level of empirical support of model _i_ |
+|-------------------------|-----------------------------------------|
+| 0-2                     | Substantial                             |
+| 4-7                     | Considerably less                       |
+| >10                     | Essentially none.                       |
+
+***
+
+## Plots
+
+### Return value - return period plot
+
+#### Gumbel space
+
+General formulation of the transformation of an arbitrary distribution function to a space where it forms a straight line:
+
+$$F\left( {RV} \right) = P = 1 - \frac{1}{{RP}} \xrightarrow{transform} RV = {a_1} \cdot \psi \left( {RP} \right) + {a_0}$$
+
+Where:
+
+* $\psi \left( .\right)$ function depends on the distribution type,
+* ${a_1}$ and ${a_0}$ are constants, also distribution dependent.
+
+For Gumbel distribution:
+
+$$\exp \left( { - \exp \left( { - \left( {\frac{{RV - \mu }}{\sigma }} \right)} \right)} \right) = 1 - \frac{1}{{RP}} \to RV =  - \sigma  \cdot {\log _e}\left( { - {{\log }_e}\left( {1 - \frac{1}{{RP}}} \right)} \right) + \mu $$
+
+$$\psi \left( {RP} \right) =  - {\log _e}\left( { - {{\log }_e}\left( {1 - \frac{1}{{RP}}} \right)} \right)$$
+
+$${a_1} = -\sigma, \quad {a_0} = \mu$$
+
+
+#### Empirical distribution function
+
+The plotting position is selected based on the recommendation of @Cunnane78.
+$$F_{\rm{emp}}\left(k\right) = \frac { k-{ 2 }/{ 5 } }{ n+{ 1 }/{ 5 } }$$
+
+_Note_ that this decision only affects the appearance of return value - return period plot but not the statistical inference.
+
+## References
