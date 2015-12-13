@@ -3,12 +3,19 @@ get_repr_values = function(data, distr_type){
   ## Exceptional snow check per EN:1991-1-3 background document (Sanpaolesi 1998)
   ## Characteristic value - 0.98 fractile based on the entire data
   
-  #remove the maximum and fit model
+  # handle seasons with no snow
+  P_snow    = length(data)/sum(data > 0)
+  idx_snow  = !(data == 0)
+  data      = data[idx_snow]
+  
+  # remove the maximum and fit model
   max_val   = max(data)
   max_idx   = which.max(data)
   data_     = data[-max_idx]
   
   P = 1-1/50
+  # correction with snowfree seasons
+  P = (P - (1 - P_snow))/P_snow
   
   
   if (distr_type == "gev"){

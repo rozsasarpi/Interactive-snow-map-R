@@ -5,7 +5,7 @@ plot_rprv = function(data, distr_type, input){
   
   # select the corresponding data and plot it
   data     = data[!is.na(data)]
-  # remove years with zero snow
+  # remove seasons with zero snow
   data = data[!(data==0)]
   
   alpha_ci = input$alpha_ci

@@ -148,7 +148,7 @@ shinyServer(function(input, output, session) {
   })
   
   
-  # descriptive statistics
+  # descriptive statistics - with snowfree seasons as well!
   descr_stat <- reactive({
     data = selected_data()
     
