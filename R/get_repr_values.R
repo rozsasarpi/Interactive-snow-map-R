@@ -4,7 +4,7 @@ get_repr_values = function(data, distr_type){
   ## Characteristic value - 0.98 fractile based on the entire data
   
   # handle seasons with no snow
-  P_snow    = length(data)/sum(data > 0)
+  P_snow    = sum(data > 0)/length(data)
   idx_snow  = !(data == 0)
   data      = data[idx_snow]
   
