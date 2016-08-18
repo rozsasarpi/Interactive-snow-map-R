@@ -7,6 +7,7 @@
 
 library(shiny)
 library(leaflet)
+library(htmltools)
 source("global.R")
 
 
@@ -31,11 +32,11 @@ shinyServer(function(input, output, session) {
                  icon = ~station_icons[StationType],
                  lng = ~Actual.Longitude,
                  lat = ~Actual.Latitude,
-                 popup = ~Name.Station,
+                 popup = ~paste("Location: ", htmlEscape(Name.Station), "<br>",
+                            "Snow depth: ", htmlEscape(SNoow.Depth), "<br>",
+                            "Wind speed: ", htmlEscape(WiNod.Speed)),
                  group = "stations")
   })
-  
-  
   
   # control displayed plot/rasterImage
   parm2map_flag <- eventReactive(input$parm2map, {
